@@ -48,6 +48,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_suspend_request_processing(self, ff_request):
@@ -63,6 +64,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_adjustment_request_processing(self, ff_request):
@@ -77,6 +79,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_cancel_request_processing(self, ff_request):
@@ -103,6 +106,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_purchase_request_processing(self, ff_request):
@@ -118,6 +122,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_change_request_processing(self, ff_request):
@@ -132,6 +137,7 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
+            'tiers_setup',
         ],
     )
     def handle_asset_resume_request_processing(self, ff_request):
