@@ -223,6 +223,7 @@ def hub():
     return {
         'id': 'HB-0000-0000',
         'name': 'CB Stage',
+        'hub_cd': 'NA',
     }
 
 
@@ -292,6 +293,16 @@ def tcr():
 @pytest.fixture
 def tcr_list():
     return json.load(open('./tests/fixtures/tcr_list.json'))
+
+
+@pytest.fixture
+def tcr_request():
+    return json.load(open('./tests/fixtures/tcr_request.json'))
+
+
+@pytest.fixture
+def ff_request():
+    return json.load(open('./tests/fixtures/fulfillment_request.json'))
 
 
 @pytest.fixture

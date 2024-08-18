@@ -190,6 +190,16 @@
               class="code topic-area"
               materialize
             />
+            <label
+              for="hub_cd"
+              class="label-text"
+            >HUB CD (for commerce system - available values are "NA, EU, OC, SG")</label>
+            <textarea
+              id="hub_cd"
+              v-model="hubCd"
+              class="code topic-area"
+              materialize
+            />
           </form>
         </div>
         <footer class="ez-dialog__footer">
@@ -303,6 +313,7 @@ export default {
 
       accountInfo: '',
       productTopic: '',
+      hubCd: '',
 
       itemsWithErrors: {},
 
@@ -341,7 +352,7 @@ export default {
     validAccountInfo: vm => isValidJSON(vm.accountInfo)
       && vm.accountInfo.length >= simplestJSONLength,
 
-    canSaveCreds: vm => vm.validAccountInfo && !!vm.productTopic,
+    canSaveCreds: vm => vm.validAccountInfo && !!vm.productTopic && !!vm.hubCd,
 
     items: ({ hubs, settings }) => hubs.map(hub => {
       const settingsEl = settings.find(x => x.hub.id === hub.id);
@@ -349,6 +360,7 @@ export default {
         ? {
           topic: settingsEl.product_topic,
           info: JSON.stringify(settingsEl.account_info, null, 2),
+          hub_cd: settingsEl.hub.hub_cd,
         }
         : null;
 
@@ -374,9 +386,11 @@ export default {
       if (item.credentials) {
         this.productTopic = item.credentials.topic;
         this.accountInfo = item.credentials.info;
+        this.hubCd = item.credentials.hub_cd;
       } else {
         this.productTopic = '';
         this.accountInfo = '';
+        this.hubCd = '';
       }
 
       this.isEditDialogOpen = true;
@@ -387,6 +401,7 @@ export default {
       this.dialogError = '';
       this.accountInfo = '';
       this.productTopic = '';
+      this.hubCd = '';
     },
 
     openDeleteDialog(item) {
@@ -407,6 +422,7 @@ export default {
         const { error } = await updateSettings(this.currentItem.hub.id, {
           account_info: JSON.parse(this.accountInfo),
           product_topic: this.productTopic,
+          hub_cd: this.hubCd,
         });
 
         if (!error) {

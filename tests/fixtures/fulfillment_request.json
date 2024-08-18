@@ -1,0 +1,330 @@
+{
+    "id": "PR-4275-8254-5743-001",
+    "type": "purchase",
+    "note": "",
+    "asset": {
+        "id": "AS-4275-8254-5743",
+        "status": "processing",
+        "external_id": "X694VGSVSF",
+        "external_uid": "7490efa2-5295-4313-b3d8-0bf382326c79",
+        "product": {
+            "id": "PRD-000-064-002",
+            "name": "Product P02 for akomissarov",
+            "status": "published"
+        },
+        "connection": {
+            "id": "CT-2230-3535",
+            "type": "production",
+            "status": "approved",
+            "provider": {
+                "id": "PA-064-101",
+                "name": "Provider account 01 for akomissarov"
+            },
+            "vendor": {
+                "id": "VA-064-000",
+                "name": "Vendor account 00 for akomissarov"
+            },
+            "hub": {
+                "id": "HB-0000-0000",
+                "name": "None"
+            },
+            "created_at": "2024-07-31T08:47:47+00:00",
+            "product_version_type": "public"
+        },
+        "events": {
+            "created": {
+                "at": "2024-08-13T10:33:46+00:00"
+            },
+            "updated": {
+                "at": "2024-08-13T10:33:46+00:00"
+            }
+        },
+        "items": [
+            {
+                "id": "PRD_000_064_002_00001",
+                "global_id": "PRD-000-064-002-00001",
+                "mpn": "MPN-A",
+                "old_quantity": "0",
+                "quantity": "34",
+                "type": "Gb",
+                "display_name": "Prd 000 064 002 00001",
+                "period": "Monthly",
+                "item_type": "Reservation"
+            }
+        ],
+        "params": [
+            {
+                "id": "param_a",
+                "name": "param_a",
+                "type": "text",
+                "phase": "fulfillment",
+                "description": "Description of the Parameter A",
+                "value": "",
+                "value_error": "",
+                "title": "Title of the Parameter A",
+                "constraints": {
+                    "meta": {},
+                    "required": true,
+                    "reconciliation": false,
+                    "hidden": false,
+                    "readonly": false
+                }
+            },
+            {
+                "id": "param_b",
+                "name": "param_b",
+                "type": "text",
+                "phase": "fulfillment",
+                "description": "Description of the Parameter B",
+                "value": "",
+                "value_error": "",
+                "title": "Title of the Parameter B",
+                "constraints": {
+                    "meta": {},
+                    "required": true,
+                    "reconciliation": false,
+                    "hidden": false,
+                    "readonly": false
+                }
+            },
+            {
+                "id": "ordering1",
+                "name": "ordering1",
+                "type": "text",
+                "phase": "ordering",
+                "description": "ordering1",
+                "value": "",
+                "value_error": "",
+                "title": "ordering1",
+                "constraints": {
+                    "placeholder": "I am the placeholder text",
+                    "hint": "I am the hint text",
+                    "meta": {},
+                    "required": true,
+                    "hidden": false,
+                    "readonly": false
+                }
+            }
+        ],
+        "tiers": {
+            "customer": {
+                "id": "TA-4421-5638-4502",
+                "version": 1,
+                "name": "t1-ff-param-test-customer",
+                "type": "customer",
+                "db": "US",
+                "external_id": "82313",
+                "external_uid": "227e1066-b75b-4986-992a-76434a72ae7f",
+                "parent": {
+                    "id": "TA-1532-3470-1230",
+                    "name": "t1-ff-param-test-reseller",
+                    "external_id": "92338"
+                },
+                "owner": {
+                    "id": "PA-064-101",
+                    "name": "Provider account 01 for akomissarov"
+                },
+                "scopes": [],
+                "hub": {
+                    "id": "HB-0000-0000",
+                    "name": "None"
+                },
+                "tax_id": "9428VIZGWW",
+                "events": {
+                    "created": {
+                        "at": "2024-08-13T04:51:03+00:00",
+                        "by": {
+                            "id": "UR-064-000-003",
+                            "name": "Alex"
+                        }
+                    },
+                    "updated": {
+                        "at": "2024-08-13T04:51:03+00:00"
+                    }
+                },
+                "environment": "production",
+                "contact_info": {
+                    "address_line1": "Reinger Green",
+                    "address_line2": "Rogahn Lakes",
+                    "city": "Amapa",
+                    "state": "Amapa",
+                    "postal_code": "68950-000",
+                    "country": "BR",
+                    "contact": {
+                        "first_name": "t1-ff-param-test-customer",
+                        "last_name": "Johnson",
+                        "email": "akomissarov+Naomi_Johnson@connect.cloudblue.com",
+                        "phone_number": {
+                            "country_code": "+55",
+                            "area_code": "11",
+                            "phone_number": "23456789",
+                            "extension": ""
+                        }
+                    }
+                }
+            },
+            "tier1": {
+                "id": "TA-1532-3470-1230",
+                "version": 1,
+                "name": "t1-ff-param-test-reseller",
+                "type": "reseller",
+                "db": "AU",
+                "external_id": "92338",
+                "external_uid": "e7a32b31-18ce-451a-b8bf-5b44dcc7df88",
+                "parent": {
+                    "id": "TA-4847-4932-2871",
+                    "name": "Provider account 01 for akomissarov",
+                    "external_id": "PA-064-101"
+                },
+                "owner": {
+                    "id": "PA-064-101",
+                    "name": "Provider account 01 for akomissarov"
+                },
+                "scopes": [],
+                "hub": {
+                    "id": "HB-0000-0000",
+                    "name": "None"
+                },
+                "tax_id": "B13M484TX9",
+                "events": {
+                    "created": {
+                        "at": "2024-08-13T04:50:27+00:00",
+                        "by": {
+                            "id": "UR-064-000-003",
+                            "name": "Alex"
+                        }
+                    },
+                    "updated": {
+                        "at": "2024-08-13T04:50:27+00:00"
+                    }
+                },
+                "environment": "production",
+                "contact_info": {
+                    "address_line1": "Roselyn Shore",
+                    "address_line2": "Fanny Trace",
+                    "city": "Balgowlah",
+                    "state": "Balgowlah",
+                    "postal_code": "2093",
+                    "country": "AU",
+                    "contact": {
+                        "first_name": "t1-ff-param-test-reseller",
+                        "last_name": "Hirthe",
+                        "email": "akomissarov+Freda_Hirthe@connect.cloudblue.com",
+                        "phone_number": {
+                            "country_code": "+61",
+                            "area_code": "2",
+                            "phone_number": "12345678",
+                            "extension": ""
+                        }
+                    }
+                }
+            },
+            "tier2": {
+                "id": "TA-4847-4932-2871",
+                "version": 1,
+                "name": "Provider account 01 for akomissarov",
+                "type": "reseller",
+                "db": "US",
+                "external_id": "PA-064-101",
+                "external_uid": "PA-064-101",
+                "owner": {
+                    "id": "PA-064-101",
+                    "name": "Provider account 01 for akomissarov"
+                },
+                "scopes": [],
+                "hub": {
+                    "id": "HB-0000-0000",
+                    "name": "None"
+                },
+                "events": {
+                    "created": {
+                        "at": "2024-07-23T11:34:12+00:00"
+                    },
+                    "updated": {
+                        "at": "2024-07-23T11:34:12+00:00"
+                    }
+                },
+                "environment": "production",
+                "contact_info": {
+                    "address_line1": "-",
+                    "address_line2": "-",
+                    "city": "-",
+                    "state": "-",
+                    "postal_code": "-",
+                    "country": "US",
+                    "contact": {
+                        "first_name": "-",
+                        "last_name": "-",
+                        "email": "unspecified@example.com",
+                        "phone_number": {
+                            "country_code": "+1",
+                            "area_code": "951",
+                            "phone_number": "2623062",
+                            "extension": ""
+                        }
+                    }
+                }
+            }
+        },
+        "template": {
+            "id": "TL-463-599-011",
+            "name": "Additional information is required to process your request"
+        },
+        "pending_request": {
+            "id": "PR-4275-8254-5743-001",
+            "type": "purchase",
+            "status": "inquiring",
+            "template": {
+                "id": "TL-463-599-011",
+                "name": "Additional information is required to process your request"
+            }
+        },
+        "marketplace": {
+            "id": "MP-06412",
+            "name": "Marketplace M12 for akomissarov",
+            "icon": "/media/PA-064-101/marketplaces/MP-06412/icon.png"
+        },
+        "contract": {
+            "id": "CRD-064-001-002",
+            "type": "distribution",
+            "name": "Contract of Distribution Agreement for the Marketplace M12 (akomissarov)"
+        },
+        "configuration": {
+            "params": []
+        }
+    },
+    "reason": "",
+    "status": "inquiring",
+    "created": "2024-08-13T10:33:46+00:00",
+    "updated": "2024-08-13T10:33:46+00:00",
+    "answered": true,
+    "assignee": "",
+    "activation_key": "Please complete our **[Activation Form](https://customer.cnct.info/?request_id=PR-4275-8254-5743-001&amp;code=RVY3WDbOrxzcwjnvtuHfNnxumMXNopsZnZSm)** to resume processing of your request",
+    "template": {
+        "id": "TL-463-599-011",
+        "name": "Additional information is required to process your request",
+        "message": "Please complete our **[Activation Form](https://customer.cnct.info/?request_id=PR-4275-8254-5743-001&amp;code=RVY3WDbOrxzcwjnvtuHfNnxumMXNopsZnZSm)** to resume processing of your request"
+    },
+    "params_form_url": "https://customer.cnct.info/?request_id=PR-4275-8254-5743-001&code=RVY3WDbOrxzcwjnvtuHfNnxumMXNopsZnZSm",
+    "marketplace": {
+        "id": "MP-06412",
+        "name": "Marketplace M12 for akomissarov",
+        "icon": "/media/PA-064-101/marketplaces/MP-06412/icon.png"
+    },
+    "contract": {
+        "id": "CRD-064-001-002",
+        "type": "distribution",
+        "name": "Contract of Distribution Agreement for the Marketplace M12 (akomissarov)"
+    },
+    "previous_approved_request": null,
+    "effective_date": null,
+    "planned_date": null,
+    "events": {
+        "created": {
+            "at": "2024-08-13T10:33:46+00:00"
+        },
+        "updated": {
+            "at": "2024-08-13T10:33:46+00:00"
+        }
+    }
+}

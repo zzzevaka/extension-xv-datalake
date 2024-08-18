@@ -59,6 +59,7 @@ def test_save_settings_validation_success(
     setting = SettingInput(
         account_info={'account_id': 'acc008787827'},
         product_topic='projects/acc008787827/topics/connect-products-topic ',
+        hub_cd='SG',
     )
 
     client_mocker = client_mocker_factory()
@@ -99,6 +100,7 @@ def test_save_settings_validation_failed(
     setting = SettingInput(
         account_info={'account_id': 'acc008787827'},
         product_topic='projects/acc008787827/topics/connect-products-topic ',
+        hub_cd='SG',
     )
 
     client = test_client_factory(DatalakeExtensionWebApplication)
@@ -113,6 +115,31 @@ def test_save_settings_validation_failed(
 
     data = response.json()
     assert data == {'error': 'PermissionDenied : 403 Account details not valid.'}
+
+
+@patch.object(GooglePubsubClient, '__init__', return_value=None)
+def test_save_settings_no_hub_cd(
+    mock_client_init,
+    test_client_factory,
+    installation,
+):
+    setting = SettingInput(
+        account_info={'account_id': 'acc008787827'},
+        product_topic='projects/acc008787827/topics/connect-products-topic ',
+    )
+
+    client = test_client_factory(DatalakeExtensionWebApplication)
+
+    response = client.post(
+        '/api/settings/HB-0000-0000',
+        json=setting.dict(),
+        context={'installation_id': 'EIN-000'},
+        installation=installation,
+    )
+    assert response.status_code == 400
+
+    data = response.json()
+    assert data == {'error': 'Exception : Hub_cd is not set for HB-0000-0000'}
 
 
 @patch.object(

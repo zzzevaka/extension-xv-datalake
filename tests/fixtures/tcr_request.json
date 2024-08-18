@@ -1,0 +1,259 @@
+{
+    "id": "TCR-355-484-775-001",
+    "type": "setup",
+    "status": "inquiring",
+    "configuration": {
+        "id": "TC-355-484-775",
+        "name": "Configuration of TA-1532-3470-1230",
+        "account": {
+            "id": "TA-1532-3470-1230",
+            "name": "t1-ff-param-test-reseller",
+            "type": "reseller",
+            "external_id": "92338",
+            "external_uid": "e7a32b31-18ce-451a-b8bf-5b44dcc7df88",
+            "tax_id": "B13M484TX9",
+            "contact_info": {
+                "address_line1": "Roselyn Shore",
+                "address_line2": "Fanny Trace",
+                "city": "Balgowlah",
+                "state": "Balgowlah",
+                "postal_code": "2093",
+                "country": "AU",
+                "contact": {
+                    "first_name": "t1-ff-param-test-reseller",
+                    "last_name": "Hirthe",
+                    "email": "akomissarov+Freda_Hirthe@connect.cloudblue.com",
+                    "phone_number": {
+                        "country_code": "+61",
+                        "area_code": "2",
+                        "phone_number": "12345678",
+                        "extension": ""
+                    }
+                }
+            }
+        },
+        "product": {
+            "id": "PRD-000-064-001",
+            "name": "Product P01 for akomissarov",
+            "status": "published"
+        },
+        "tier_level": 1,
+        "connection": {
+            "id": "CT-2567-8364",
+            "type": "production",
+            "status": "approved",
+            "provider": {
+                "id": "PA-064-101",
+                "name": "Provider account 01 for akomissarov"
+            },
+            "vendor": {
+                "id": "VA-064-000",
+                "name": "Vendor account 00 for akomissarov"
+            },
+            "hub": {
+                "id": "HB-0000-0000",
+                "name": "None"
+            },
+            "created_at": "2024-07-24T08:46:26+00:00",
+            "product_version_type": "public"
+        },
+        "events": {
+            "created": {
+                "at": "2024-08-13T04:52:00+00:00",
+                "by": {
+                    "id": "UR-064-000-003",
+                    "name": "Alex"
+                }
+            },
+            "updated": {
+                "at": "2024-08-13T04:52:00+00:00",
+                "by": {
+                    "id": "UR-064-000-003",
+                    "name": "Alex"
+                }
+            }
+        },
+        "params": [
+            {
+                "id": "FF_PARAM",
+                "title": "FF_PARAM",
+                "description": "FF_PARAM",
+                "type": "text",
+                "scope": "tier1",
+                "phase": "fulfillment",
+                "hint": "I am the hint text",
+                "placeholder": "I am the placeholder text",
+                "constraints": {
+                    "required": true,
+                    "hidden": false,
+                    "unique": false,
+                    "readonly": false
+                }
+            },
+            {
+                "id": "t1-ord",
+                "title": "t1-ord",
+                "description": "t1-ord",
+                "type": "text",
+                "scope": "tier1",
+                "phase": "ordering",
+                "hint": "I am the hint text",
+                "placeholder": "I am the placeholder text",
+                "constraints": {
+                    "required": true,
+                    "hidden": false,
+                    "unique": false,
+                    "readonly": false
+                }
+            }
+        ],
+        "template": {
+            "id": "TL-773-189-375",
+            "name": "Additional information is required to process your request",
+            "representation": "Please complete our **[Activation Form]({{ activation_form_url }})** to resume processing of your request"
+        },
+        "open_request": {
+            "id": "TCR-355-484-775-001"
+        },
+        "status": "processing",
+        "contract": {
+            "id": "CRD-064-001-001",
+            "name": "Contract of Distribution Agreement for the Marketplace M11 (akomissarov)",
+            "type": "distribution"
+        },
+        "marketplace": {
+            "id": "MP-06411",
+            "name": "Marketplace M11 for akomissarov",
+            "icon": "/media/PA-064-101/marketplaces/MP-06411/icon.png"
+        }
+    },
+    "params": [
+        {
+            "value": "",
+            "value_error": "",
+            "title": "FF_PARAM",
+            "description": "FF_PARAM",
+            "type": "text",
+            "scope": "tier1",
+            "phase": "fulfillment",
+            "hint": "I am the hint text",
+            "placeholder": "I am the placeholder text",
+            "constraints": {
+                "required": true,
+                "hidden": false,
+                "unique": false,
+                "readonly": false
+            },
+            "id": "FF_PARAM"
+        },
+        {
+            "value": "",
+            "value_error": "",
+            "title": "t1-ord",
+            "description": "t1-ord",
+            "type": "text",
+            "scope": "tier1",
+            "phase": "ordering",
+            "hint": "I am the hint text",
+            "placeholder": "I am the placeholder text",
+            "constraints": {
+                "required": true,
+                "hidden": false,
+                "unique": false,
+                "readonly": false
+            },
+            "id": "t1-ord"
+        }
+    ],
+    "assignee": {
+        "id": "UR-064-000-003",
+        "name": "Alex"
+    },
+    "template": {
+        "id": "TL-773-189-375",
+        "name": "Additional information is required to process your request",
+        "representation": "Please complete our **[Activation Form]({{ activation_form_url }})** to resume processing of your request"
+    },
+    "activation": {
+        "link": "https://customer.cnct.info/?request_id=TCR-355-484-775-001&code=bBOevsWbQQJiWXF2gzAVI4zmAiVMocw047DY"
+    },
+    "environment": "production",
+    "tiers": {
+        "tier1": {
+            "id": "TA-1532-3470-1230",
+            "name": "t1-ff-param-test-reseller",
+            "type": "reseller",
+            "external_id": "92338",
+            "external_uid": "e7a32b31-18ce-451a-b8bf-5b44dcc7df88",
+            "tax_id": "B13M484TX9",
+            "contact_info": {
+                "address_line1": "Roselyn Shore",
+                "address_line2": "Fanny Trace",
+                "city": "Balgowlah",
+                "state": "Balgowlah",
+                "postal_code": "2093",
+                "country": "AU",
+                "contact": {
+                    "first_name": "t1-ff-param-test-reseller",
+                    "last_name": "Hirthe",
+                    "email": "akomissarov+Freda_Hirthe@connect.cloudblue.com",
+                    "phone_number": {
+                        "country_code": "+61",
+                        "area_code": "2",
+                        "phone_number": "12345678",
+                        "extension": ""
+                    }
+                }
+            }
+        },
+        "tier2": {
+            "id": "TA-4847-4932-2871",
+            "name": "Provider account 01 for akomissarov",
+            "type": "reseller",
+            "external_id": "PA-064-101",
+            "external_uid": "PA-064-101",
+            "contact_info": {
+                "address_line1": "-",
+                "address_line2": "-",
+                "city": "-",
+                "state": "-",
+                "postal_code": "-",
+                "country": "US",
+                "contact": {
+                    "first_name": "-",
+                    "last_name": "-",
+                    "email": "unspecified@example.com",
+                    "phone_number": {
+                        "country_code": "+1",
+                        "area_code": "951",
+                        "phone_number": "2623062",
+                        "extension": ""
+                    }
+                }
+            }
+        }
+    },
+    "events": {
+        "created": {
+            "at": "2024-08-13T04:52:00+00:00",
+            "by": {
+                "id": "UR-064-000-003",
+                "name": "Alex"
+            }
+        },
+        "updated": {
+            "at": "2024-08-13T04:52:00+00:00",
+            "by": {
+                "id": "UR-064-000-003",
+                "name": "Alex"
+            }
+        },
+        "inquired": {
+            "at": "2024-08-13T04:52:00+00:00",
+            "by": {
+                "id": "UR-064-000-003",
+                "name": "Alex"
+            }
+        }
+    }
+}

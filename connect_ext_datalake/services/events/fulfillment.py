@@ -5,7 +5,7 @@ from connect.eaas.core.responses import BackgroundResponse, ScheduledExecutionRe
 
 from connect_ext_datalake.services.client import GooglePubsubClient
 from connect_ext_datalake.services.publish import publish_ff_request
-from connect_ext_datalake.services.settings import get_settings
+from connect_ext_datalake.services.settings import get_settings, validate_hub_cd
 
 
 class FulfillmentEventsMixin:
@@ -15,12 +15,14 @@ class FulfillmentEventsMixin:
         if hub_id:
             setting = get_settings(self.installation, hub_id)
             if setting:
+                validate_hub_cd(setting.hub.hub_cd, hub_id)
                 try:
                     client = GooglePubsubClient(setting)
                     publish_ff_request(
                         client,
                         ff_request,
                         self.logger,
+                        setting.hub.hub_cd,
                     )
                 except Exception as e:
                     self.logger.exception(
@@ -48,7 +50,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_suspend_request_processing(self, ff_request):
@@ -64,7 +65,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_adjustment_request_processing(self, ff_request):
@@ -79,7 +79,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_cancel_request_processing(self, ff_request):
@@ -106,7 +105,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_purchase_request_processing(self, ff_request):
@@ -122,7 +120,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_change_request_processing(self, ff_request):
@@ -137,7 +134,6 @@ class FulfillmentEventsMixin:
             'scheduled',
             'revoking',
             'revoked',
-            'tiers_setup',
         ],
     )
     def handle_asset_resume_request_processing(self, ff_request):
@@ -148,7 +144,7 @@ class FulfillmentEventsMixin:
     [
         {
             'name': 'FF_REQUEST_PAGE_SIZE',
-            'initial_value': 100,
+            'initial_value': '100',
         },
     ],
 )

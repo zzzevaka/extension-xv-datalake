@@ -6,7 +6,7 @@ from google.api_core.exceptions import GoogleAPIError
 
 from connect_ext_datalake.services.client import GooglePubsubClient
 from connect_ext_datalake.services.publish import publish_tc, publish_tc_from_tcr, publish_tcr
-from connect_ext_datalake.services.settings import get_settings
+from connect_ext_datalake.services.settings import get_settings, validate_hub_cd
 
 
 class TierConfigEventsMixin:
@@ -16,6 +16,7 @@ class TierConfigEventsMixin:
             hub_id = tcr['configuration']['connection']['hub']['id']
             setting = get_settings(self.installation, hub_id)
             if setting:
+                validate_hub_cd(setting.hub.hub_cd, hub_id)
                 client = GooglePubsubClient(setting)
                 publish_tc_from_tcr(
                     self.installation_client,
@@ -27,6 +28,7 @@ class TierConfigEventsMixin:
                     client,
                     tcr,
                     self.logger,
+                    setting.hub.hub_cd,
                 )
             else:
                 self.logger.info(
