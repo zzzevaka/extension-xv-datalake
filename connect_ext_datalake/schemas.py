@@ -12,11 +12,13 @@ class Hub(BaseModel):
     id: str
     name: str
     icon: str | None = None
+    hub_cd: str | None = None
 
 
 class SettingInput(BaseModel):
     account_info: dict
     product_topic: str
+    hub_cd: str | None = None
 
 
 class Setting(SettingInput):

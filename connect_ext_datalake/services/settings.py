@@ -3,6 +3,9 @@ from connect.client import ConnectClient, R
 from connect_ext_datalake.schemas import Hub, Setting, SettingInput
 
 
+HUB_CD_LIST = ["NA", "EU", "OC", "SG"]
+
+
 def get_all_settings(installation: dict):
     settings = []
 
@@ -51,10 +54,7 @@ def update_settings(
 
     existing_setting['account_info'] = setting.account_info
     existing_setting['product_topic'] = setting.product_topic
-    existing_setting['hub'] = {
-        'id': hub['id'],
-        'name': hub['name'],
-    }
+    existing_setting['hub'] = {'id': hub['id'], 'name': hub['name'], 'hub_cd': setting.hub_cd}
 
     client('devops').installations[installation['id']].update(
         payload={
@@ -168,3 +168,14 @@ def creating_settings_map_from_product(
         installation,
         client,
     )
+
+
+def validate_hub_cd(hub_cd=None, hub_id=None):
+    if not hub_cd:
+        raise Exception(f"Hub_cd is not set for {hub_id}")
+    else:
+        if hub_cd not in HUB_CD_LIST:
+            raise Exception(
+                f"Value of hub_cd '{hub_cd}' not in the list of available values: "
+                + ", ".join(HUB_CD_LIST)
+            )

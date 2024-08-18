@@ -286,7 +286,7 @@ def prepare_tc_data(client: ConnectClient, tc: dict):
     }
 
 
-def prepare_tcr_data(tcr: dict):
+def prepare_tcr_data(tcr: dict, hub_cd):
     tcr["activation_link"] = tcr.get('activation', {}).get('link', None)
     tcr["name"] = f"Tier Configuration Request for {tcr['configuration']['account']['id']}."
     tcr['tier_account_id'] = tcr['configuration']['account']['id']
@@ -295,6 +295,7 @@ def prepare_tcr_data(tcr: dict):
     tcr["published_at"] = datetime.now(tz=timezone(timedelta(hours=0))).isoformat(
         timespec='seconds'
     )
+    tcr["hub_cd"] = hub_cd
     sanitize_tcr(tcr)
 
     return {
@@ -304,7 +305,7 @@ def prepare_tcr_data(tcr: dict):
     }
 
 
-def prepare_ff_request_data(ff_request: dict):
+def prepare_ff_request_data(ff_request: dict, hub_cd):
     ff_request["name"] = f"Fulfillment request for asset {ff_request['asset']['id']}."
     ff_request["asset_id"] = ff_request['asset']['id']
     ff_request['product_id'] = ff_request['asset']['product']['id']
@@ -314,6 +315,7 @@ def prepare_ff_request_data(ff_request: dict):
     ff_request["published_at"] = datetime.now(tz=timezone(timedelta(hours=0))).isoformat(
         timespec='seconds'
     )
+    ff_request["hub_cd"] = hub_cd
     sanitize_ff_request(ff_request)
 
     return {

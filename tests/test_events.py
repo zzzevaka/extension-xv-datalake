@@ -399,7 +399,6 @@ def test_handle_tier_config_request(
     ).select('-tiers', '-configuration').order_by('-created').first().mock(
         return_value=tcr_list,
     )
-
     ext = DatalakeExtensionEventsApplication(
         connect_client,
         logger,

@@ -19,6 +19,7 @@ from connect_ext_datalake.services.settings import (
     get_all_settings,
     get_settings,
     update_settings,
+    validate_hub_cd,
 )
 
 
@@ -51,6 +52,8 @@ class SettingsWebAppMixin:
             pubsub_client = GooglePubsubClient(settings)
             pubsub_client.validate()
 
+            validate_hub_cd(settings.hub.hub_cd, hub_id)
+
             return settings
         except Exception as e:
             return self.get_error_response(e)
@@ -69,6 +72,8 @@ class SettingsWebAppMixin:
         logger: LoggerAdapter = Depends(get_logger),
     ):
         try:
+            validate_hub_cd(setting.hub_cd, hub_id)
+
             pubsub_client = GooglePubsubClient(setting)
             pubsub_client.validate()
 

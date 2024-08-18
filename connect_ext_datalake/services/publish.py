@@ -47,8 +47,9 @@ def publish_tcr(
     pubsub_client: GooglePubsubClient,
     tcr,
     logger,
+    hub_cd,
 ):
-    payload = prepare_tcr_data(tcr)
+    payload = prepare_tcr_data(tcr, hub_cd)
     logger.info(f"Start publishing Tier Config Request {tcr['id']}. Payload: {payload}")
     pubsub_client.publish(payload)
     logger.info(f"Publish of Tier Config Request {tcr['id']}" f' is successful.')
@@ -58,8 +59,9 @@ def publish_ff_request(
     pubsub_client: GooglePubsubClient,
     ff_request,
     logger,
+    hub_cd,
 ):
-    payload = prepare_ff_request_data(ff_request)
+    payload = prepare_ff_request_data(ff_request, hub_cd)
     logger.info(f"Start publishing Fulfillment Request {ff_request['id']}. Payload: {payload}")
     pubsub_client.publish(payload)
     logger.info(f"Publish of Fulfillment Request {ff_request['id']}" f' is successful.')
