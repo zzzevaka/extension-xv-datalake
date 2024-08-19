@@ -152,10 +152,9 @@ class TierConfigTasksMixin:
 
         installation_id = schedule['parameter'].get('installation_id')
         asset_ids = schedule['parameter'].get('asset_ids')
-        if installation_id is None or asset_ids is None:
-            return ScheduledExecutionResponse.fail(
-                'Installation_id and array of asset ids should be specified'
-            )
+        asset_statuses = schedule['parameter'].get('asset_statuses')
+        if installation_id is None:
+            return ScheduledExecutionResponse.fail('Installation_id should be specified')
         installation_client = self.get_installation_admin_client(installation_id)
         installation_client.resourceset_append = False
         installation = installation_client('devops').installations[installation_id].get()
@@ -164,7 +163,6 @@ class TierConfigTasksMixin:
             installation_client('subscriptions')
             .assets.all()
             .order_by('events.created.at')
-            .filter(R().id.in_(asset_ids))
             .select(
                 '-items',
                 '-params',
@@ -174,6 +172,12 @@ class TierConfigTasksMixin:
                 '-contract',
             )
         )
+        if asset_ids:
+            assets = assets.filter(R().id.in_(asset_ids))
+        if asset_statuses:
+            assets = assets.filter(R().status.in_(asset_statuses))
+
+        self.logger.info(f'Total number of assets is: {assets.count()}')
         unique_product_tier_accounts = set()
         for request in assets:
             tier1 = request['tiers'].get('tier1')
@@ -186,7 +190,7 @@ class TierConfigTasksMixin:
             f'Number of unique pairs of TA-ProductID: {len(unique_product_tier_accounts)}'
         )
 
-        counter = 0
+        counter = 1
         for product_id, tier_account_id in unique_product_tier_accounts:
             tier_config_requests = (
                 installation_client('tier')
@@ -203,12 +207,9 @@ class TierConfigTasksMixin:
                     hub_id = tcr['configuration']['connection']['hub']['id']
                     setting = get_settings(installation, hub_id)
                     if setting:
+                        validate_hub_cd(setting.hub.hub_cd, hub_id)
                         pubsub_client = GooglePubsubClient(setting)
-                        publish_tcr(
-                            pubsub_client,
-                            tcr,
-                            self.logger,
-                        )
+                        publish_tcr(pubsub_client, tcr, self.logger, setting.hub.hub_cd)
                     else:
                         self.logger.info(
                             f"Publish of TCR {tcr['id']} is not processed"
