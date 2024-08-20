@@ -158,6 +158,20 @@
               label="Sync Translations"
               @click="syncTranslations"
             />
+            <c-button
+              :icon="icons.googleSyncBaseline"
+              :size="18"
+              :upper-case="false"
+              label="Sync FF requests"
+              @click="syncFFrequests"
+            />
+            <c-button
+              :icon="icons.googleSyncBaseline"
+              :size="18"
+              :upper-case="false"
+              label="Sync TCRs"
+              @click="syncTCRs"
+            />
           </div>
         </c-menu>
       </div>
@@ -202,6 +216,8 @@ import {
   getProducts,
   publishAllProducts,
   publishProducts,
+  syncFFrequests,
+  syncTCRs,
   syncTranslations,
 } from '~scripts/api';
 
@@ -308,6 +324,18 @@ export default {
       await syncTranslations();
 
       this.sendMsg('Translations synced');
+    },
+
+    async syncFFrequests() {
+      await syncFFrequests();
+
+      this.sendMsg('FF Requests synced');
+    },
+
+    async syncTCRs() {
+      await syncTCRs();
+
+      this.sendMsg('TCRs synced');
     },
   },
 

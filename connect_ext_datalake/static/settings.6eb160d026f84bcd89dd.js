@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2342:
+/***/ 4398:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -28,10 +28,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 ;// CONCATENATED MODULE: ./ui/src/components/App.vue?vue&type=template&id=36357ed7&scoped=true
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./ui/src/components/SyncCard.vue?vue&type=template&id=5c01c1f5&scoped=true
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./ui/src/components/SyncCard.vue?vue&type=template&id=e368032a&scoped=true
 
 var _withScopeId = function _withScopeId(n) {
-  return (0,vue_esm_bundler/* pushScopeId */.dD)("data-v-5c01c1f5"), n = n(), (0,vue_esm_bundler/* popScopeId */.Cn)(), n;
+  return (0,vue_esm_bundler/* pushScopeId */.dD)("data-v-e368032a"), n = n(), (0,vue_esm_bundler/* popScopeId */.Cn)(), n;
 };
 var _hoisted_1 = {
   id: "synchronisation-card",
@@ -118,7 +118,7 @@ var _hoisted_25 = {
 var _hoisted_26 = {
   "class": "menu-items"
 };
-function SyncCardvue_type_template_id_5c01c1f5_scoped_true_render(_ctx, _cache, $props, $setup, $data, $options) {
+function SyncCardvue_type_template_id_e368032a_scoped_true_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_c_icon = (0,vue_esm_bundler/* resolveComponent */.up)("c-icon");
   var _component_c_button = (0,vue_esm_bundler/* resolveComponent */.up)("c-button");
   var _component_c_menu = (0,vue_esm_bundler/* resolveComponent */.up)("c-menu");
@@ -214,6 +214,18 @@ function SyncCardvue_type_template_id_5c01c1f5_scoped_true_render(_ctx, _cache, 
         "upper-case": false,
         label: "Sync Translations",
         onClick: $options.syncTranslations
+      }, null, 8 /* PROPS */, ["icon", "onClick"]), (0,vue_esm_bundler/* createVNode */.Wm)(_component_c_button, {
+        icon: $data.icons.googleSyncBaseline,
+        size: 18,
+        "upper-case": false,
+        label: "Sync FF requests",
+        onClick: $options.syncFFrequests
+      }, null, 8 /* PROPS */, ["icon", "onClick"]), (0,vue_esm_bundler/* createVNode */.Wm)(_component_c_button, {
+        icon: $data.icons.googleSyncBaseline,
+        size: 18,
+        "upper-case": false,
+        label: "Sync TCRs",
+        onClick: $options.syncTCRs
       }, null, 8 /* PROPS */, ["icon", "onClick"])])];
     }),
     _: 1 /* STABLE */
@@ -226,7 +238,7 @@ function SyncCardvue_type_template_id_5c01c1f5_scoped_true_render(_ctx, _cache, 
     icon: $data.icons.googleCheckCircleBaseline
   }, null, 8 /* PROPS */, ["message", "icon"])) : (0,vue_esm_bundler/* createCommentVNode */.kq)("v-if", true)]);
 }
-;// CONCATENATED MODULE: ./ui/src/components/SyncCard.vue?vue&type=template&id=5c01c1f5&scoped=true
+;// CONCATENATED MODULE: ./ui/src/components/SyncCard.vue?vue&type=template&id=e368032a&scoped=true
 
 // EXTERNAL MODULE: ./node_modules/ramda/es/filter.js + 2 modules
 var filter = __webpack_require__(7767);
@@ -1639,6 +1651,16 @@ var api_syncTranslations = function syncTranslations() {
     method: 'POST'
   });
 };
+var api_syncFFrequests = function syncFFrequests() {
+  return fetch('/api/requests/*/publish-all', {
+    method: 'POST'
+  });
+};
+var api_syncTCRs = function syncTCRs() {
+  return fetch('/api/tier/configs/requests/*/publish-all', {
+    method: 'POST'
+  });
+};
 var validateSettings = function validateSettings(hubId) {
   return fetch("/api/settings/".concat(hubId, "/validate")).then(getJson);
 };
@@ -1825,33 +1847,67 @@ function SyncCardvue_type_script_lang_js_asyncToGenerator(fn) { return function 
           }
         }, _callee3);
       }))();
-    }
-  },
-  watch: {
-    isSyncDialogOpen: function isSyncDialogOpen(newVal) {
+    },
+    syncFFrequests: function syncFFrequests() {
       var _this4 = this;
       return SyncCardvue_type_script_lang_js_asyncToGenerator( /*#__PURE__*/SyncCardvue_type_script_lang_js_regeneratorRuntime().mark(function _callee4() {
         return SyncCardvue_type_script_lang_js_regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              if (!(newVal === true)) {
-                _context4.next = 6;
-                break;
-              }
-              _context4.next = 3;
-              return getProducts();
+              _context4.next = 2;
+              return api_syncFFrequests();
+            case 2:
+              _this4.sendMsg('FF Requests synced');
             case 3:
-              _this4.products = _context4.sent;
-              _this4.syncAll = false;
-              _this4.selectedProductsIds = (0,reduce/* default */.Z)(function (acc, p) {
-                acc[p.id] = false;
-                return acc;
-              }, {}, _this4.products);
-            case 6:
             case "end":
               return _context4.stop();
           }
         }, _callee4);
+      }))();
+    },
+    syncTCRs: function syncTCRs() {
+      var _this5 = this;
+      return SyncCardvue_type_script_lang_js_asyncToGenerator( /*#__PURE__*/SyncCardvue_type_script_lang_js_regeneratorRuntime().mark(function _callee5() {
+        return SyncCardvue_type_script_lang_js_regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return api_syncTCRs();
+            case 2:
+              _this5.sendMsg('TCRs synced');
+            case 3:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5);
+      }))();
+    }
+  },
+  watch: {
+    isSyncDialogOpen: function isSyncDialogOpen(newVal) {
+      var _this6 = this;
+      return SyncCardvue_type_script_lang_js_asyncToGenerator( /*#__PURE__*/SyncCardvue_type_script_lang_js_regeneratorRuntime().mark(function _callee6() {
+        return SyncCardvue_type_script_lang_js_regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              if (!(newVal === true)) {
+                _context6.next = 6;
+                break;
+              }
+              _context6.next = 3;
+              return getProducts();
+            case 3:
+              _this6.products = _context6.sent;
+              _this6.syncAll = false;
+              _this6.selectedProductsIds = (0,reduce/* default */.Z)(function (acc, p) {
+                acc[p.id] = false;
+                return acc;
+              }, {}, _this6.products);
+            case 6:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6);
       }))();
     }
   }
@@ -1866,7 +1922,7 @@ function SyncCardvue_type_script_lang_js_asyncToGenerator(fn) { return function 
 ;
 
 
-const SyncCard_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(SyncCardvue_type_script_lang_js, [['render',SyncCardvue_type_template_id_5c01c1f5_scoped_true_render],['__scopeId',"data-v-5c01c1f5"]])
+const SyncCard_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(SyncCardvue_type_script_lang_js, [['render',SyncCardvue_type_template_id_e368032a_scoped_true_render],['__scopeId',"data-v-e368032a"]])
 
 /* harmony default export */ const SyncCard = (SyncCard_exports_);
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./ui/src/components/PubCard.vue?vue&type=template&id=3d5f2951&scoped=true
@@ -2793,7 +2849,7 @@ All rights reserved.
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], () => (__webpack_require__(2342)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], () => (__webpack_require__(4398)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
