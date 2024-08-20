@@ -28,6 +28,14 @@ export const syncTranslations = () => fetch('/api/localization/translations/*/pu
   method: 'POST',
 });
 
+export const syncFFrequests = () => fetch('/api/requests/*/publish-all', {
+  method: 'POST',
+});
+
+export const syncTCRs = () => fetch('/api/tier/configs/requests/*/publish-all', {
+  method: 'POST',
+});
+
 export const validateSettings = (hubId) => fetch(`/api/settings/${hubId}/validate`).then(getJson);
 
 export const updateSettings = (hubId, settings) => fetch(`/api/settings/${hubId}`, {

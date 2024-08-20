@@ -8,8 +8,10 @@ from connect.eaas.core.extension import WebApplicationBase
 from fastapi.responses import JSONResponse
 
 from connect_ext_datalake.apis import (
+    FulfillmentWebAppMixin,
     ProductsWebAppMixin,
     SettingsWebAppMixin,
+    TCRWebAppMixin,
     TierConfigsWebAppMixin,
     TranslationWebAppMixin,
 )
@@ -18,9 +20,11 @@ from connect_ext_datalake.apis import (
 @web_app(router)
 @account_settings_page('Datalake Pubsub Settings', '/static/settings.html')
 class DatalakeExtensionWebApplication(
+    FulfillmentWebAppMixin,
     WebApplicationBase,
     ProductsWebAppMixin,
     SettingsWebAppMixin,
+    TCRWebAppMixin,
     TierConfigsWebAppMixin,
     TranslationWebAppMixin,
 ):

@@ -85,3 +85,51 @@ def create_task_publish_translation(
     client('devops').services[context.extension_id].environments[
         context.environment_id
     ].schedules.create(payload=payload)
+
+
+def create_task_publish_ffr(
+    logger,
+    client: ConnectClient,
+    context: Context,
+    installation: dict,
+):
+    payload = {
+        'method': 'publish_ff_requests',
+        'name': f'Publish Fulfillment requests - {context.account_id}',
+        'description': 'Publish all Fulfillment requests to Xvantage Goggle PubSub Topic.',
+        'parameter': {'installation_id': installation['id']},
+        'trigger': {
+            'type': 'onetime',
+            'date': (datetime.utcnow() + timedelta(0, 70)).isoformat(),
+        },
+    }
+
+    logger.info(f'Creating dynamic one time schedule method with payload: {payload}')
+
+    client('devops').services[context.extension_id].environments[
+        context.environment_id
+    ].schedules.create(payload=payload)
+
+
+def create_task_publish_tcrs(
+    logger,
+    client: ConnectClient,
+    context: Context,
+    installation: dict,
+):
+    payload = {
+        'method': 'publish_tier_config_requests',
+        'name': f'Publish Tier Config requests - {context.account_id}',
+        'description': 'Publish all Tier Config requests to Xvantage Goggle PubSub Topic.',
+        'parameter': {'installation_id': installation['id']},
+        'trigger': {
+            'type': 'onetime',
+            'date': (datetime.utcnow() + timedelta(0, 70)).isoformat(),
+        },
+    }
+
+    logger.info(f'Creating dynamic one time schedule method with payload: {payload}')
+
+    client('devops').services[context.extension_id].environments[
+        context.environment_id
+    ].schedules.create(payload=payload)
