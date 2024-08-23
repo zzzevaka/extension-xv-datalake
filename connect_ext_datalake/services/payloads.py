@@ -309,8 +309,8 @@ def prepare_ff_request_data(ff_request: dict, hub_cd):
     ff_request["name"] = f"Fulfillment request for asset {ff_request['asset']['id']}."
     ff_request["asset_id"] = ff_request['asset']['id']
     ff_request['product_id'] = ff_request['asset']['product']['id']
-    ff_request["asset_external_id"] = ff_request['asset']['external_id']
-    ff_request["asset_external_uid"] = ff_request['asset']['external_uid']
+    ff_request["asset_external_id"] = ff_request['asset'].get('external_id', None)
+    ff_request["asset_external_uid"] = ff_request['asset'].get('external_uid', None)
     ff_request["activation_link"] = ff_request.get('params_form_url', None)
     ff_request["published_at"] = datetime.now(tz=timezone(timedelta(hours=0))).isoformat(
         timespec='seconds'
