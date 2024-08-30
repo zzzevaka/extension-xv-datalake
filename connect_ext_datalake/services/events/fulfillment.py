@@ -9,6 +9,8 @@ from connect_ext_datalake.services.settings import get_settings, validate_hub_cd
 
 class FulfillmentEventsMixin:
     def __process_ff_request_event(self, ff_request):
+        return BackgroundResponse.done()
+
         self.logger.info(f"Obtained fulfillment request with id {ff_request['id']}")
         hub_id = ff_request.get('asset', {}).get('connection', {}).get('hub', {}).get('id', None)
         if hub_id:
