@@ -16,19 +16,20 @@ class GooglePubsubClient:
         self.account = settings.account_info
         self.topic = settings.product_topic
 
-        credentials = Credentials.from_service_account_info(
-            self.account,
-            audience='https://pubsub.googleapis.com/google.pubsub.v1.Publisher',
-        )
-
-        self.publisher = PublisherClient(credentials=credentials)
-
     def validate(self):
-        return self.publisher.get_topic({'topic': self.topic})
+        with PublisherClient(credentials=self.credentials) as publisher:
+            return publisher.get_topic({'topic': self.topic})
 
     def publish(self, data):
         string_message = json.dumps(data)
         message = bytes(string_message, 'utf-8')
-        future = self.publisher.publish(self.topic, message, spam='eggs')
+        with PublisherClient(credentials=self.credentials) as publisher:
+            future = publisher.publish(self.topic, message, spam='eggs')
+            return future.result()
 
-        return future.result()
+    @property
+    def credentials(self):
+        return Credentials.from_service_account_info(
+            self.account,
+            audience='https://pubsub.googleapis.com/google.pubsub.v1.Publisher',
+        )
